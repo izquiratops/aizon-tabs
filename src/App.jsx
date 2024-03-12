@@ -1,5 +1,6 @@
 import React from 'react';
-import Tabs, { Tab } from './Tabs.js';
+import Tabs, { Tab } from './Tabs';
+
 function App() {
   return (
     <Tabs>
