@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Tabs.css';
 
-
 export class Tab extends Component {
   constructor(props) {
     super(props);
@@ -32,9 +31,10 @@ export class Tabs extends Component {
 
   onClickTabHandler(index) {
     this.setState({ activeTab: index });
-    if (this.props.onClick) this.props.onClick(index);
-  };
-
+    if (this.props.onClick) {
+      this.props.onClick(index);
+    }
+  }
 
   render() {
     const tabsNav = [];
