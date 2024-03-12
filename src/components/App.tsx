@@ -1,6 +1,11 @@
 // import Tabs, { Tab } from './Tabs';
 
+import { reportWebVitals } from "../reportWebVitals";
+
+reportWebVitals(console.debug);
+
 function App() {
+
   return (
     <div>Hello</div>
     // <Tabs>
