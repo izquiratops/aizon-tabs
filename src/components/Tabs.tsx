@@ -1,18 +1,26 @@
-import React, { Component, useState } from 'react';
-import { TabProps, TabsProps, TabsState } from './types';
+import React, { Component, createContext, useContext, useId, useState } from 'react';
+import { TabProps, TabsContextType, TabsProps, TabsState } from './types';
 import './Tabs.css';
 
-export function Tab({ active, title, onClick }: TabProps) {
+export function Tab({ children, title }: TabProps) {
+  const tabIndex = useId();
+  const { activeTabIndex, setActiveTabIndex, setActiveTabContent } = useContext(TabsContext);
+
   const containerClassName = ['tab-wrapper'];
   const titleClassName = ['title'];
 
-  if (active) {
+  if (activeTabIndex === tabIndex) {
     containerClassName.push('active');
     titleClassName.push('active');
   }
 
+  const handleTabClick = () => {
+    setActiveTabIndex(tabIndex);
+    setActiveTabContent(children);
+  }
+
   return (
-    <li className={containerClassName.join(' ')} onClick={onClick}>
+    <li className={containerClassName.join(' ')} onClick={handleTabClick}>
       <span className={titleClassName.join(' ')}>
         {title}
       </span>
@@ -20,19 +28,23 @@ export function Tab({ active, title, onClick }: TabProps) {
   );
 }
 
-export function FunctionalTabs ({ children, defaultTab }: React.PropsWithChildren<TabsProps>) {
-  const [activeIndexTab, setActiveIndexTab] = useState(defaultTab ?? 0);
-  const [content, setContent] = useState(<div>TODO</div>);
+export const TabsContext = createContext({} as TabsContextType);
+
+export function FunctionalTabs ({ children }: React.PropsWithChildren<TabsProps>) {
+  const [activeTabIndex, setActiveTabIndex] = useState<string>();
+  const [activeTabContent, setActiveTabContent] = useState<React.ReactNode>();
 
   return (
     <div className='tabs-container'>
         <nav>
-          <ul className='tabs-nav'>
-            {children}
-          </ul>
+          <TabsContext.Provider value={{ activeTabIndex, setActiveTabIndex, setActiveTabContent }}>
+            <ul className='tabs-nav'>
+              {children}
+            </ul>
+          </TabsContext.Provider>
         </nav>
         <section className='content'>
-          {content}
+          {activeTabContent}
         </section>
       </div>
   )

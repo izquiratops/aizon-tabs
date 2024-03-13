@@ -1,18 +1,22 @@
-import { MouseEventHandler, ReactNode } from 'react';
+import { Dispatch, ReactNode, SetStateAction } from 'react';
 
 export type TabProps = {
   title: string;
   children: ReactNode;
-  active?: boolean;
-  onClick?: MouseEventHandler<HTMLLIElement>;
 };
 
 export type TabsState = {
-  activeTab: number;
+  activeTab: string;
 };
 
 export type TabsProps = {
   children?: ReactNode[];
-  defaultTab?: number;
-  onClick?: (arg: number) => void;
+  // onClick?: (arg: number) => void;
+  // defaultTab?: string;
+};
+
+export type TabsContextType = {
+  activeTabIndex: string | undefined;
+  setActiveTabIndex: Dispatch<SetStateAction<string | undefined>>;
+  setActiveTabContent: Dispatch<SetStateAction<ReactNode>>;
 };
