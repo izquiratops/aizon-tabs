@@ -1,19 +1,24 @@
-import React, {
-  Children,
-  ReactElement,
+import {
+  PropsWithChildren,
   ReactNode,
+  createContext,
   useCallback,
   useState,
 } from 'react';
 import { TabsContextType } from '../types';
 import './Tabs.css';
 
-export const TabsContext = React.createContext({} as TabsContextType);
+export const TabsContext = createContext({} as TabsContextType);
 
-export function Tabs({ children }: React.PropsWithChildren) {
+export function Tabs({ children }: PropsWithChildren) {
+  // Counter used for assign child index
+  const [, setCounter] = useState(0);
+  // Index value of the current selected Tab
   const [activeTabIndex, setActiveTabIndex] = useState<number>();
-  const [activeTabContent, setActiveTabContent] = useState<React.ReactNode>();
+  // React node assigned to the current selected Tab
+  const [activeTabContent, setActiveTabContent] = useState<ReactNode>();
 
+  // Method to assign a new Tab selection
   const setActiveTab = useCallback(
     (index: number | undefined, content: ReactNode) => {
       setActiveTabIndex(index);
@@ -25,13 +30,13 @@ export function Tabs({ children }: React.PropsWithChildren) {
   return (
     <div className="tabs-container">
       <nav>
-        <TabsContext.Provider value={{ activeTabIndex, setActiveTab }}>
-          <ul className="tabs-nav">
-            {Children.map(children, (child, index) =>
-              React.cloneElement(child as ReactElement, { index })
-            )}
-          </ul>
-        </TabsContext.Provider>
+        <ul className="tabs-nav">
+          <TabsContext.Provider
+            value={{ activeTabIndex, setActiveTab, setCounter }}
+          >
+            {children}
+          </TabsContext.Provider>
+        </ul>
       </nav>
       <section className="content">{activeTabContent}</section>
     </div>
