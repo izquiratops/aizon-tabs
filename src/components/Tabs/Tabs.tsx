@@ -5,7 +5,7 @@ import React, {
   useCallback,
   useState,
 } from 'react';
-import { TabsContextType } from './types';
+import { TabsContextType } from '../types';
 import './Tabs.css';
 
 export const TabsContext = React.createContext({} as TabsContextType);

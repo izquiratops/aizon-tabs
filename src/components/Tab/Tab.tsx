@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
-import { TabsContext } from './Tabs';
-import { TabProps } from './types';
+import { TabsContext } from '../Tabs/Tabs';
+import { TabProps } from '../types';
 import './Tabs.css';
 
 export function Tab({ children, index, title }: TabProps) {

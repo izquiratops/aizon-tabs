@@ -1,4 +1,5 @@
-import { Tab, Tabs } from './Tabs';
+import { Tab } from '../Tab/Tab';
+import { Tabs } from '../Tabs/Tabs';
 
 export default function App() {
   return (

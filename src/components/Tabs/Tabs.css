@@ -1,0 +1,21 @@
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin-block: 0;
+
+    &.tabs-nav {
+        display: flex;
+    }
+}
+
+.tabs-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.content {
+    padding: 16px 8px;
+    font-size: 14px;
+    color: #4C5769;
+}
