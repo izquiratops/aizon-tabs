@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { TabProps, TabsProps, TabsState } from './types';
 import './Tabs.css';
 
@@ -18,6 +18,24 @@ export function Tab({ active, title, onClick }: TabProps) {
       </span>
     </li>
   );
+}
+
+export function FunctionalTabs ({ children, defaultTab }: React.PropsWithChildren<TabsProps>) {
+  const [activeIndexTab, setActiveIndexTab] = useState(defaultTab ?? 0);
+  const [content, setContent] = useState(<div>TODO</div>);
+
+  return (
+    <div className='tabs-container'>
+        <nav>
+          <ul className='tabs-nav'>
+            {children}
+          </ul>
+        </nav>
+        <section className='content'>
+          {content}
+        </section>
+      </div>
+  )
 }
 
 export class Tabs extends Component<TabsProps, TabsState> {
