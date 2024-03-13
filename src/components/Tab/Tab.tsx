@@ -3,7 +3,7 @@ import { TabsContext } from '../Tabs/Tabs';
 import { TabProps } from '../types';
 import './Tab.css';
 
-export function Tab({ children, title }: TabProps) {
+export function Tab({ children, title, selected }: TabProps) {
   // Index of this Tab. The value is defined by the Tabs parent on mount
   const tabIndexRef = useRef<number>();
   // Tabs related methods
@@ -13,13 +13,15 @@ export function Tab({ children, title }: TabProps) {
   const containerClassName = ['tab-wrapper'];
   const titleClassName = ['title'];
 
-  if (activeTabIndex === tabIndexRef.current) {
+  // Check selected state if exists OR check Tabs index current selection
+  if (selected ?? activeTabIndex === tabIndexRef.current) {
     containerClassName.push('active');
     titleClassName.push('active');
   }
 
   useEffect(() => {
-    setCounter((index) => {
+    // Optional chaining to not run this method if there's no context provided.
+    setCounter?.((index) => {
       if (tabIndexRef.current === undefined) {
         // Assign index if it's undefined
         tabIndexRef.current = index;

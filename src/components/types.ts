@@ -2,7 +2,8 @@ import { Dispatch, ReactNode, SetStateAction } from 'react';
 
 export type TabProps = {
   title: string;
-  children: ReactNode;
+  selected?: boolean;
+  children?: ReactNode;
 };
 
 export type TabsContextType = {
