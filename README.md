@@ -1,14 +1,22 @@
-# Aizon Front End test
+This project uses Vite as the development tooling, replacing the deprected react-scripts I initialy found.
 
-### Install dependencies and run the project
-- yarn
-- yarn start
+Node 20 is a new requirement, you must switch to that version in order to run the project.
 
-### Help!
+Install dependencies with your package manager of choice.
+After a successful install you're ready to go running the NPM command 'start'.
 
-Here you will find the implementation of our Tabs component. The component works like a charm but sadly the code is not so good. We need your help to write modern and well structured code. There is no one perfect solution, the important thing here is to refactor the component until you think it can no longer be improved. We do not expect any change in the styles nor the behaviour, just improve the code quality.
+``` shell
+# Install dependencies
+yarn
+# Run dev build in localhost
+yarn start
+```
 
-Adding some tests would be a plus.
+Tests and some Stories for Storybook were added for the component Tabs as well.
 
-Thanks for dedicating us your time!
-
+``` shell
+# Run test batch for Tabs
+yarn test
+# Run storybook in localhost
+yarn storybook
+```
