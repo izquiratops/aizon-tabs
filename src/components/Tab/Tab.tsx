@@ -26,7 +26,8 @@ function Tab({ children, title, selected }: TabProps) {
         // Assign index if it's undefined
         tabIndexRef.current = index;
         // Autoselect the first tab by default
-        if (index === defaultIndexRef.current) {
+        console.debug(tabIndexRef.current, defaultIndexRef.current);
+        if (tabIndexRef.current === defaultIndexRef.current) {
           setActiveTab(index, children);
         }
         // Increase index counter for the next sibling

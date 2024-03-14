@@ -3,7 +3,7 @@ import Tabs from '../Tabs/Tabs';
 
 export default function App() {
   return (
-    <Tabs defaultIndex={1}>
+    <Tabs>
       <Tab key="1" title="Tab 1">
         Content of tab 1
       </Tab>

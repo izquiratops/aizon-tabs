@@ -12,7 +12,7 @@ import './Tabs.css';
 export const TabsContext = createContext({} as TabsContextType);
 
 function Tabs({ children, defaultIndex }: PropsWithChildren<TabsProps>) {
-  // TODO: ...
+  // Index autoselected by default on mount
   const defaultIndexRef = useRef(defaultIndex ?? 0);
   // Counter used for assign child index
   const [, setCounter] = useState(0);

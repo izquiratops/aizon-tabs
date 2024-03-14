@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Tab from '../components/Tab/Tab';
 
 const meta = {
-  title: 'Example/Tab',
+  title: 'Aizon/Tab',
   component: Tab,
   parameters: {
     layout: 'centered',
@@ -11,11 +11,11 @@ const meta = {
   argTypes: {
     title: {
       control: { type: 'text' },
-      description: 'Label text',
+      description: 'Label that appears centered in the tab.',
     },
     selected: {
-      control: { type: 'bolean' },
-      description: 'Selection state',
+      control: { type: 'boolean' },
+      description: 'Boolean that switches the style as selected or not.',
     },
     children: {
       table: { disable: true },
@@ -28,7 +28,7 @@ type Story = StoryObj<typeof meta>;
 
 export const SelectedTab: Story = {
   args: {
-    title: 'Example Tab 🌈',
+    title: '🌈 Example Tab 🌈',
     selected: true,
   },
 };
