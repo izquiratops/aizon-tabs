@@ -10,14 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout
       uses: actions/checkout@v4.1.2
 
     - name: Install dependencies
       run: npm install
 
-    - name: Run vite build
+    - name: Run build
       run: npm run build
+
+    - name: Configure Git identity
+      run: |
+        git config user.name 'Jordi Izquierdo'
+        git config user.email 'jordi.izquierdo.casares@gmail.com'
 
     - name: Move dist files to another branch
       run: |
@@ -32,11 +37,6 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4.1.2
-
-    - name: Configure Git
-      run: |
-        git config --global user.name 'Jordi Izquierdo'
-        git config --global user.email 'jordi.izquierdo.casares@gmail.com'
 
     - name: Push dist files to GitHub Pages branch
       run: |
