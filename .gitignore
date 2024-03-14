@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+.yarn
+.yarnrc
+
 # Editor directories and files
 !.vscode/extensions.json
 .idea
