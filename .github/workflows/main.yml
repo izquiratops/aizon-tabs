@@ -11,7 +11,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@4.1.2
+      uses: actions/checkout@v4.1.2
 
     - name: Install dependencies
       run: npm install
@@ -31,7 +31,7 @@ jobs:
     needs: build
     steps:
     - name: Checkout code
-      uses: actions/checkout@4.1.2
+      uses: actions/checkout@v4.1.2
 
     - name: Configure Git
       run: |
