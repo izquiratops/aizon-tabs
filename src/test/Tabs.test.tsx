@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { act, render, screen } from '@testing-library/react';
-import { Tabs } from '../components/Tabs/Tabs';
-import { Tab } from '../components/Tab/Tab';
+import Tabs from '../components/Tabs/Tabs';
+import Tab from '../components/Tab/Tab';
 
 describe('Tab selection behavior', () => {
   beforeEach(() => {

@@ -3,11 +3,11 @@ import { TabsContext } from '../Tabs/Tabs';
 import { TabProps } from '../types';
 import './Tab.css';
 
-export function Tab({ children, title, selected }: TabProps) {
+function Tab({ children, title, selected }: TabProps) {
   // Index of this Tab. The value is defined by the Tabs parent on mount
   const tabIndexRef = useRef<number>();
   // Tabs related methods
-  const { activeTabIndex, setActiveTab, setCounter } = useContext(TabsContext);
+  const { defaultIndexRef, activeTabIndex, setActiveTab, setCounter } = useContext(TabsContext);
 
   // Style classes used on the HTML elements
   const containerClassName = ['tab-wrapper'];
@@ -26,7 +26,8 @@ export function Tab({ children, title, selected }: TabProps) {
         // Assign index if it's undefined
         tabIndexRef.current = index;
         // Autoselect the first tab by default
-        if (index === 0) {
+        console.debug(tabIndexRef.current, defaultIndexRef.current);
+        if (tabIndexRef.current === defaultIndexRef.current) {
           setActiveTab(index, children);
         }
         // Increase index counter for the next sibling
@@ -56,3 +57,5 @@ export function Tab({ children, title, selected }: TabProps) {
     </li>
   );
 }
+
+export default Tab;

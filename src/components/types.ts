@@ -1,4 +1,8 @@
-import { Dispatch, ReactNode, SetStateAction } from 'react';
+import { Dispatch, MutableRefObject, ReactNode, SetStateAction } from 'react';
+
+export type TabsProps = {
+  defaultIndex?: number;
+}
 
 export type TabProps = {
   title: string;
@@ -7,6 +11,7 @@ export type TabProps = {
 };
 
 export type TabsContextType = {
+  defaultIndexRef: MutableRefObject<number>;
   activeTabIndex: number | undefined;
   setActiveTab: (index: number, content: ReactNode) => void;
   setCounter: Dispatch<SetStateAction<number>>;

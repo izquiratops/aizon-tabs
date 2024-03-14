@@ -3,14 +3,17 @@ import {
   ReactNode,
   createContext,
   useCallback,
+  useRef,
   useState,
 } from 'react';
-import { TabsContextType } from '../types';
+import { TabsContextType, TabsProps } from '../types';
 import './Tabs.css';
 
 export const TabsContext = createContext({} as TabsContextType);
 
-export function Tabs({ children }: PropsWithChildren) {
+function Tabs({ children, defaultIndex }: PropsWithChildren<TabsProps>) {
+  // Index autoselected by default on mount
+  const defaultIndexRef = useRef(defaultIndex ?? 0);
   // Counter used for assign child index
   const [, setCounter] = useState(0);
   // Index value of the current selected Tab
@@ -32,7 +35,7 @@ export function Tabs({ children }: PropsWithChildren) {
       <nav>
         <ul className="tabs-nav">
           <TabsContext.Provider
-            value={{ activeTabIndex, setActiveTab, setCounter }}
+            value={{ defaultIndexRef, activeTabIndex, setActiveTab, setCounter }}
           >
             {children}
           </TabsContext.Provider>
@@ -42,3 +45,5 @@ export function Tabs({ children }: PropsWithChildren) {
     </div>
   );
 }
+
+export default Tabs;
