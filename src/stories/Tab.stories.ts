@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Tab } from '../components/Tab/Tab';
+import Tab from '../components/Tab/Tab';
 
 const meta = {
   title: 'Example/Tab',
@@ -21,9 +21,6 @@ const meta = {
       table: { disable: true },
     },
   },
-  args: {
-    title: 'Tab 1',
-  },
 } satisfies Meta<typeof Tab>;
 
 export default meta;
@@ -31,7 +28,7 @@ type Story = StoryObj<typeof meta>;
 
 export const SelectedTab: Story = {
   args: {
-    title: 'Button',
+    title: 'Example Tab 🌈',
     selected: true,
   },
 };

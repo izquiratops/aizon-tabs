@@ -1,9 +1,9 @@
-import { Tab } from '../Tab/Tab';
-import { Tabs } from '../Tabs/Tabs';
+import Tab from '../Tab/Tab';
+import Tabs from '../Tabs/Tabs';
 
 export default function App() {
   return (
-    <Tabs>
+    <Tabs defaultIndex={1}>
       <Tab key="1" title="Tab 1">
         Content of tab 1
       </Tab>
