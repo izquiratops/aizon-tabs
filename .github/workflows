@@ -1,0 +1,44 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - development
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run vite build
+      run: npm run build
+
+    - name: Move dist files to another branch
+      run: |
+        git checkout -b dist-branch
+        git add dist
+        git commit -m "Add distribution files"
+        git push origin dist-branch
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Configure Git
+      run: |
+        git config --global user.name 'Jordi Izquierdo'
+        git config --global user.email 'jordi.izquierdo.casares@gmail.com'
+
+    - name: Push dist files to GitHub Pages branch
+      run: |
+        git checkout dist-branch
+        git push origin dist-branch --force
