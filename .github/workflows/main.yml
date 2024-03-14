@@ -22,7 +22,7 @@ jobs:
     - name: Move dist files to another branch
       run: |
         git checkout -b dist-branch
-        git add dist
+        git add dist --force
         git commit -m "Add distribution files"
         git push origin dist-branch
 
