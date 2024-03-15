@@ -12,7 +12,7 @@ yarn
 yarn start
 ```
 
-Tests and some Stories for Storybook were added for the component Tabs as well.
+Tests and some Stories for [Storybook](https://izquiratops.github.io/aizon-tabs/) were added for the component Tabs as well.
 
 ```shell
 # Run test batch for Tabs
