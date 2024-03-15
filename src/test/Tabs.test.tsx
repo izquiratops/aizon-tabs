@@ -7,25 +7,23 @@ describe('Tab selection behavior', () => {
   beforeEach(() => {
     render(
       <Tabs>
-        {/* Default selection */}
         <Tab key="1" title="Tab 1">
-          Content of tab 1
+          Content of the default selected tab.
         </Tab>
-        {/* Unselected */}
         <Tab key="2" title="Tab 2">
-          Content of tab 2
+          Content of the second tab.
         </Tab>
       </Tabs>
     );
   });
 
-  describe('On default selection (Tab 1)', () => {
+  describe("On default selection without explicit 'defaultIndex'", () => {
     it('shows the content from Tab 1', () => {
-      expect(screen.getByText(/Content of tab 1/i)).toBeInTheDocument();
+      expect(screen.getByText(/default selected tab/i)).toBeInTheDocument();
     });
 
     it('hides the content from Tab 2', () => {
-      expect(screen.queryByText(/Content of tab 2/i)).not.toBeInTheDocument();
+      expect(screen.queryByText(/second tab/i)).not.toBeInTheDocument();
     });
   });
 
@@ -39,11 +37,38 @@ describe('Tab selection behavior', () => {
     });
 
     it('shows the content from Tab 2', () => {
-      expect(screen.getByText(/Content of tab 2/i)).toBeInTheDocument();
+      expect(screen.getByText(/second tab/i)).toBeInTheDocument();
     });
 
     it('hides the content from Tab 1', () => {
-      expect(screen.queryByText(/Content of tab 1/i)).not.toBeInTheDocument();
+      expect(
+        screen.queryByText(/default selected tab/i)
+      ).not.toBeInTheDocument();
+    });
+  });
+});
+
+describe("Property 'defaultIndex'", () => {
+  describe('On explicit default selection as index 1', () => {
+    beforeAll(() => {
+      render(
+        <Tabs defaultIndex={1}>
+          <Tab key="1" title="Tab 1">
+            Content that should not appear anywhere.
+          </Tab>
+          <Tab key="2" title="Tab 2">
+            Content of the default tab.
+          </Tab>
+        </Tabs>
+      );
+    });
+
+    it('shows the content from Tab 2', () => {
+      expect(screen.getByText(/default tab/i)).toBeInTheDocument();
+    });
+
+    it('hides the content from Tab 1', () => {
+      expect(screen.queryByText(/should not appear/i)).not.toBeInTheDocument();
     });
   });
 });

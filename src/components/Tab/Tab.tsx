@@ -7,7 +7,8 @@ function Tab({ children, title, selected }: TabProps) {
   // Index of this Tab. The value is defined by the Tabs parent on mount
   const tabIndexRef = useRef<number>();
   // Tabs related methods
-  const { defaultIndexRef, activeTabIndex, setActiveTab, setCounter } = useContext(TabsContext);
+  const { defaultIndexRef, activeTabIndex, setActiveTab, setCounter } =
+    useContext(TabsContext);
 
   // Style classes used on the HTML elements
   const containerClassName = ['tab-wrapper'];
@@ -25,11 +26,12 @@ function Tab({ children, title, selected }: TabProps) {
       if (tabIndexRef.current === undefined) {
         // Assign index if it's undefined
         tabIndexRef.current = index;
-        // Autoselect the first tab by default
-        console.debug(tabIndexRef.current, defaultIndexRef.current);
+
+        // Autoselect the default tab (0 if its not defined)
         if (tabIndexRef.current === defaultIndexRef.current) {
           setActiveTab(index, children);
         }
+
         // Increase index counter for the next sibling
         index++;
       }

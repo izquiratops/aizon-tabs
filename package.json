@@ -1,6 +1,10 @@
 {
-  "name": "aizon-fe-test",
-  "version": "0.1.0",
+  "name": "aizon-tabs",
+  "version": "1.0.0",
+  "author": {
+    "name": "Jordi Izquierdo Casares",
+    "email": "jordi.izquierdo.casares@gmail.com"
+  },
   "private": true,
   "type": "module",
   "dependencies": {

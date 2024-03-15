@@ -14,7 +14,7 @@ const meta = {
       description: 'Index that will be autoselected when Tabs mounts',
       table: {
         defaultValue: 0,
-      }
+      },
     },
     children: {
       table: { disable: true },
@@ -32,10 +32,16 @@ export const Tab1Default: Story = {
     return (
       <Tabs {...args}>
         <Tab key="1" title="Tab 1">
-          <img src={`https://placedog.net/640/480?id=${randomId}`} alt="Place Dog" />
+          <img
+            src={`https://placedog.net/640/480?id=${randomId}`}
+            alt="Place Dog at Tab 1"
+          />
         </Tab>
         <Tab key="2" title="Tab 2">
-          <img src={`https://placedog.net/640/480?id=${randomId + 1}`} alt="Place Dog" />
+          <img
+            src={`https://placedog.net/640/480?id=${randomId + 1}`}
+            alt="Place Dog at Tab 2"
+          />
         </Tab>
       </Tabs>
     );
