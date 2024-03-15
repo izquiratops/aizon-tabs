@@ -1,19 +1,21 @@
+name: Run tests before merging Pull Requests
+
 on:
   pull_request:
-    branches:
-      - development
+    branches: ['development']
 
 jobs:
   testing:
+    # Using 'Testing' as the label to approve Pull Requests
     name: Testing
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4.1.2
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: yarn
+      - name: Install dependencies
+        run: yarn
 
-    - name: Run Tests
-      run: yarn test
+      - name: Run tests
+        run: yarn test

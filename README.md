@@ -1,10 +1,10 @@
 This project uses Vite as the development tooling, replacing the deprected react-scripts I initialy found.
-Node 20 is a new requirement, you must switch to that version in order to run the project.
+Node 20 is a prerequisite for running the project.
 
 Install dependencies with your package manager of choice.
 After a successful install you're ready to go running the NPM command 'start'.
 
-``` shell
+```shell
 # Install dependencies
 yarn
 
@@ -14,7 +14,7 @@ yarn start
 
 Tests and some Stories for Storybook were added for the component Tabs as well.
 
-``` shell
+```shell
 # Run test batch for Tabs
 yarn test
 
